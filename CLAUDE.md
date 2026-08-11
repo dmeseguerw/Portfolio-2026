@@ -96,6 +96,13 @@ Sourced from the `portfolio-design` claude.ai/design project (mockup pages: Home
 - **Radii:** 6px buttons/inputs, 10px cards/images, pill for tags/badges
 - The dark-mode palette is a derived complement — the mockup itself was light-only.
 
+## CI/CD
+
+- **GitHub Actions** (`.github/workflows/ci.yml`) runs PR quality gates only: `npm run lint`, `npm run typecheck`, `npm run build`, on every pull request targeting `main` and on every push to `main`. Node 22, `npm ci` for installs, npm cache enabled via `actions/setup-node`.
+- No test runner is scaffolded (no Vitest/Jest) — intentionally skipped until the owner decides to add one.
+- **No branch protection rules on `main`** — left open on purpose so PRs can merge without required status checks. CI still runs and reports pass/fail on PRs, it's just not a hard gate.
+- **Deploys are handled by Vercel's native Git integration, not GitHub Actions.** As of this writing, the GitHub repo (`github.com/dmeseguerw/Portfolio-2026`) is **not yet connected** to the Vercel project (`portfolio-2026`) — this has to be done manually in the Vercel dashboard (Project → Settings → Git → connect to the GitHub repo), since it can't be scripted via API/CLI in a non-interactive session. One preview URL already exists from a manual MCP-tool deploy that predates Git integration. Once connected: every PR gets an automatic preview deployment, and merges to `main` auto-deploy to production.
+
 ## Medium Integration
 
 - Fetch posts server-side from `https://medium.com/feed/@dmeseguerw1599` (RSS) inside `/lib/medium.ts`.
@@ -125,7 +132,6 @@ npm run typecheck # tsc --noEmit
 
 - **Contact form doesn't send anywhere yet.** It's a client-side demo (shows a thank-you state on submit) matching the claude.ai/design mockup — needs a real backend (e.g. an email API or form service) before it's functional.
 - **No gallery/project images yet.** About page and project detail page use styled placeholder blocks where the mockup referenced real photos (`public/images/*.jpg` in the mockup) — swap in real images when available.
-- **Not yet deployed to Vercel.**
 
 ## Decisions Log
 
@@ -138,3 +144,4 @@ npm run typecheck # tsc --noEmit
 - **Dark mode:** added via `next-themes`, matching the prior portfolio.
 - **Contact page:** added (not in the original proposed structure) because the claude.ai/design mockup included one with real contact info.
 - **Visual design:** pulled from an existing claude.ai/design mockup (`portfolio-design`, project ID `14d1197b-b8d8-4263-9a2a-8d13a550f381`) rather than generated via `/design-sync` (which turned out to push local component libraries *up* to claude.ai/design, not pull designs down — tokens/content were read directly via the `DesignSync` tool's `get_file` instead).
+- **CI/CD split:** GitHub Actions handles PR quality gates (lint/typecheck/build) only; actual deployment is delegated entirely to Vercel's Git integration rather than a GitHub Actions deploy step, to avoid duplicating what Vercel already does better (preview URLs per PR, auto production deploys on merge). Branch protection deliberately left off `main` for now — the owner wants to keep merging frictionless while working solo.
