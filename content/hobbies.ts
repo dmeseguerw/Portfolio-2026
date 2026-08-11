@@ -1,6 +1,7 @@
 export interface Hobby {
   title: { en: string; es: string };
   description: { en: string; es: string };
+  image: string;
 }
 
 export const hobbies: Hobby[] = [
@@ -10,6 +11,7 @@ export const hobbies: Hobby[] = [
       en: "Fitness enthusiast at heart — running, walking, and mixed strength and endurance work.",
       es: "Entusiasta del fitness de corazón — running, caminatas, y entrenamiento mixto de fuerza y resistencia.",
     },
+    image: "/images/hybrid.png",
   },
   {
     title: { en: "Cycling & Volleyball", es: "Ciclismo y Voleibol" },
@@ -17,6 +19,7 @@ export const hobbies: Hobby[] = [
       en: "Cycling to unwind, plus competitive and beach volleyball.",
       es: "Ciclismo para desconectar, además de voleibol competitivo y de playa.",
     },
+    image: "/images/volleyball.JPG",
   },
   {
     title: { en: "Hiking", es: "Senderismo" },
@@ -24,12 +27,6 @@ export const hobbies: Hobby[] = [
       en: "Getting outdoors on foot whenever I can.",
       es: "Saliendo al aire libre a pie siempre que puedo.",
     },
-  },
-  {
-    title: { en: "Downtime", es: "Tiempo libre" },
-    description: {
-      en: "Binging TV shows and meeting up with friends.",
-      es: "Viendo series y reuniéndome con amigos.",
-    },
+    image: "/images/hiking.jpg",
   },
 ];

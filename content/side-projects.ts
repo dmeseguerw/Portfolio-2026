@@ -1,6 +1,7 @@
 export interface SideProject {
   title: string;
   description: { en: string; es: string };
+  slug?: string;
 }
 
 export const sideProjects: SideProject[] = [
@@ -10,6 +11,7 @@ export const sideProjects: SideProject[] = [
       en: "An AI project built around World Cup predictions.",
       es: "Un proyecto de IA construido alrededor de predicciones del Mundial.",
     },
+    slug: "world-cup-ai",
   },
   {
     title: "Personal Finance App",
@@ -17,6 +19,7 @@ export const sideProjects: SideProject[] = [
       en: "A personal finance app, built for fun.",
       es: "Una aplicación de finanzas personales, construida por diversión.",
     },
+    slug: "personal-finance-app",
   },
   {
     title: "Hyrox Training with Claude",
