@@ -132,7 +132,6 @@ npm run typecheck # tsc --noEmit
 
 - **Contact form doesn't send anywhere yet.** It's a client-side demo (shows a thank-you state on submit) matching the claude.ai/design mockup — needs a real backend (e.g. an email API or form service) before it's functional.
 - **No gallery/project images yet.** About page and project detail page use styled placeholder blocks where the mockup referenced real photos (`public/images/*.jpg` in the mockup) — swap in real images when available.
-- **Vercel Git integration not yet connected.** The project is deployed manually to a preview URL but the GitHub repo isn't linked to the Vercel project yet — see CI/CD section above for the manual step needed in the Vercel dashboard.
 
 ## Decisions Log
 
