@@ -30,6 +30,7 @@ A personal portfolio web app showcasing experience, projects, hobbies, and blog 
 - `clsx`, `tailwind-merge` — the `cn()` helper
 - `next-themes` — SSR-safe dark mode (avoids flash-of-wrong-theme, handles persistence)
 - `@vercel/analytics` — Vercel Analytics
+- `resend` — sends contact form submissions as email (server-side, from `app/api/contact/route.ts`); owner-chosen provider with a usable free tier
 
 ## Folder Structure (actual)
 
@@ -46,7 +47,9 @@ A personal portfolio web app showcasing experience, projects, hobbies, and blog 
       /projects/[slug]/page.tsx
       /hobbies/page.tsx
       /blog/page.tsx           → excerpt cards pulled from Medium, each links out to medium.com
-      /contact/page.tsx        → client-side contact form (demo only — does not send anywhere yet)
+      /contact/page.tsx        → contact form, POSTs to /api/contact
+  /api
+    /contact/route.ts          → Route Handler: validates input, honeypot spam check, sends email via Resend
 /components
   /ui                          → Button, Card, Badge, Container, ThemeToggle, LocaleSwitcher
   /layout                      → Nav.tsx, Footer.tsx
@@ -128,9 +131,16 @@ npm run typecheck # tsc --noEmit
 - ❌ Don't add new dependencies without a quick note here on why.
 - ❌ Don't put long-form prose in `/dictionaries` — those are UI microcopy only; prose belongs in `/content` as `{ en, es }`.
 
+## Contact Form
+
+- `components/sections/ContactForm.tsx` is a client component that POSTs JSON (`{ name, email, message, company }`) to `app/api/contact/route.ts`.
+- The route validates input server-side (non-empty, name ≤100 chars, message ≤5000 chars, basic email regex), checks a hidden honeypot field (`company` — silently "succeeds" without sending if filled), then sends an email to `dmeseguerw1599@gmail.com` via the `resend` SDK, with `replyTo` set to the visitor's email.
+- Requires `RESEND_API_KEY` in both `.env.local` (local dev) and the Vercel project's environment variables (production) — see `.env.example`. Without it, the route responds 500 rather than sending. Get a free-tier key at resend.com.
+- The route's `from` address (`onboarding@resend.dev`) is Resend's default testing sender; swap it for a verified domain sender once one is set up in the Resend dashboard.
+
 ## Known gaps / follow-ups
 
-- **Contact form doesn't send anywhere yet.** It's a client-side demo (shows a thank-you state on submit) matching the claude.ai/design mockup — needs a real backend (e.g. an email API or form service) before it's functional.
+- **Contact form needs `RESEND_API_KEY` configured to actually send.** The form and backend are wired up (see Contact Form section above) but won't deliver mail until the owner adds a Resend API key to Vercel's env vars (and `.env.local` for local testing).
 - **No gallery/project images yet.** About page and project detail page use styled placeholder blocks where the mockup referenced real photos (`public/images/*.jpg` in the mockup) — swap in real images when available.
 
 ## Decisions Log
@@ -144,4 +154,5 @@ npm run typecheck # tsc --noEmit
 - **Dark mode:** added via `next-themes`, matching the prior portfolio.
 - **Contact page:** added (not in the original proposed structure) because the claude.ai/design mockup included one with real contact info.
 - **Visual design:** pulled from an existing claude.ai/design mockup (`portfolio-design`, project ID `14d1197b-b8d8-4263-9a2a-8d13a550f381`) rather than generated via `/design-sync` (which turned out to push local component libraries *up* to claude.ai/design, not pull designs down — tokens/content were read directly via the `DesignSync` tool's `get_file` instead).
+- **Contact form backend:** Resend (owner's choice) — Route Handler at `app/api/contact/route.ts` calls the Resend SDK server-side, so no CSP `connect-src` changes were needed (the client never talks to a third-party domain directly).
 - **CI/CD split:** GitHub Actions handles PR quality gates (lint/typecheck/build) only; actual deployment is delegated entirely to Vercel's Git integration rather than a GitHub Actions deploy step, to avoid duplicating what Vercel already does better (preview URLs per PR, auto production deploys on merge). Branch protection deliberately left off `main` for now — the owner wants to keep merging frictionless while working solo.
