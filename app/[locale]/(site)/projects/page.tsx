@@ -1,5 +1,6 @@
 import { getDictionary, isLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ProjectCard } from "@/components/sections/ProjectCard";
 import { getAllProjects } from "@/lib/markdown";
@@ -40,16 +41,32 @@ export default async function ProjectsPage({
           {dictionary.projects.alsoBuilding}
         </p>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {sideProjects.map((sp) => (
-            <div key={sp.title} className="rounded-[10px] border border-border p-7">
-              <h3 className="mb-2 font-serif text-lg font-medium">
-                {sp.title}
-              </h3>
-              <p className="text-sm leading-6 text-muted">
-                {sp.description[locale]}
-              </p>
-            </div>
-          ))}
+          {sideProjects.map((sp) => {
+            const content = (
+              <>
+                <h3 className="mb-2 font-serif text-lg font-medium">
+                  {sp.title}
+                </h3>
+                <p className="text-sm leading-6 text-muted">
+                  {sp.description[locale]}
+                </p>
+              </>
+            );
+
+            return sp.slug ? (
+              <Link
+                key={sp.title}
+                href={`/${locale}/projects/${sp.slug}`}
+                className="rounded-[10px] border border-border p-7 transition-colors hover:border-primary"
+              >
+                {content}
+              </Link>
+            ) : (
+              <div key={sp.title} className="rounded-[10px] border border-border p-7">
+                {content}
+              </div>
+            );
+          })}
         </div>
       </div>
     </Container>

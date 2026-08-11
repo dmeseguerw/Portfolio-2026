@@ -1,5 +1,6 @@
 import { getDictionary, isLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { hobbies } from "@/content/hobbies";
 
@@ -27,10 +28,14 @@ export default async function HobbiesPage({
       <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {hobbies.map((hobby) => (
           <div key={hobby.title.en}>
-            <div className="mb-4 flex aspect-square items-center justify-center rounded-[10px] border border-border bg-[repeating-linear-gradient(45deg,#F7EDEF,#F7EDEF_10px,#F1E1E5_10px,#F1E1E5_20px)] dark:bg-[repeating-linear-gradient(45deg,#241a1c,#241a1c_10px,#2b1f22_10px,#2b1f22_20px)]">
-              <span className="font-mono text-[11px] tracking-[0.05em] text-muted uppercase">
-                photo
-              </span>
+            <div className="relative mb-4 aspect-square overflow-hidden rounded-[10px] border border-border">
+              <Image
+                src={hobby.image}
+                alt={hobby.title[locale]}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              />
             </div>
             <h3 className="mb-2 font-serif text-xl font-medium">
               {hobby.title[locale]}
