@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "hobbies": "Hobbies",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "footer": {
+    "tagline": "Let's make something.",
+    "rights": "All rights reserved."
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "locale": {
+    "switch": "Switch language"
+  },
+  "home": {
+    "viewProjects": "View Projects",
+    "getInTouch": "Get in touch",
+    "previouslyAt": "Previously at",
+    "featuredProject": "Featured Project",
+    "viewAll": "View all",
+    "fromBlog": "From the blog",
+    "offClock": "Off the clock"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Here are some of the projects I've worked on. Each project showcases different skills and technologies.",
+    "featured": "Featured",
+    "viewProject": "View Project",
+    "alsoBuilding": "Also building, for fun",
+    "back": "All Projects",
+    "viewOnGithub": "View on GitHub"
+  },
+  "about": {
+    "title": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "activities": "Activities"
+  },
+  "hobbies": {
+    "kicker": "Off the Clock",
+    "title": "A few things I do that aren't work.",
+    "subtitle": "Based in Costa Rica — here's what fills the rest of my week."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts, tutorials, and insights on software development and technology.",
+    "readOnMedium": "Read on Medium",
+    "unavailable": "Posts are temporarily unavailable — visit Medium directly.",
+    "visitMedium": "Visit Medium",
+    "noPosts": "No posts yet",
+    "noPostsDescription": "New posts sync automatically from Medium — check back soon."
+  },
+  "contact": {
+    "title": "Let's talk.",
+    "subtitle": "Have a project in mind, or just want to say hello? Send a note below, or reach out directly.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "message": "Message",
+    "messagePlaceholder": "What's on your mind?",
+    "send": "Send message",
+    "thanks": "Thanks — got it.",
+    "thanksDescription": "I'll get back to you soon.",
+    "location": "Costa Rica"
+  }
+}

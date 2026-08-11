@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "hobbies": "Pasatiempos",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "tagline": "Hagamos algo juntos.",
+    "rights": "Todos los derechos reservados."
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "toggle": "Cambiar tema"
+  },
+  "locale": {
+    "switch": "Cambiar idioma"
+  },
+  "home": {
+    "viewProjects": "Ver proyectos",
+    "getInTouch": "Contactar",
+    "previouslyAt": "Anteriormente en",
+    "featuredProject": "Proyecto destacado",
+    "viewAll": "Ver todos",
+    "fromBlog": "Del blog",
+    "offClock": "Fuera del trabajo"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Estos son algunos de los proyectos en los que he trabajado. Cada uno muestra distintas habilidades y tecnologías.",
+    "featured": "Destacado",
+    "viewProject": "Ver proyecto",
+    "alsoBuilding": "También construyendo, por diversión",
+    "back": "Todos los proyectos",
+    "viewOnGithub": "Ver en GitHub"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "experience": "Experiencia",
+    "education": "Educación",
+    "skills": "Habilidades",
+    "activities": "Actividades"
+  },
+  "hobbies": {
+    "kicker": "Fuera del trabajo",
+    "title": "Algunas cosas que hago fuera del trabajo.",
+    "subtitle": "Radicado en Costa Rica — esto es lo que llena el resto de mi semana."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Reflexiones, tutoriales y perspectivas sobre desarrollo de software y tecnología.",
+    "readOnMedium": "Leer en Medium",
+    "unavailable": "Las publicaciones no están disponibles temporalmente — visita Medium directamente.",
+    "visitMedium": "Visitar Medium",
+    "noPosts": "Aún no hay publicaciones",
+    "noPostsDescription": "Las nuevas publicaciones se sincronizan automáticamente desde Medium — vuelve pronto."
+  },
+  "contact": {
+    "title": "Hablemos.",
+    "subtitle": "¿Tienes un proyecto en mente o solo quieres saludar? Envía un mensaje o contáctame directamente.",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "message": "Mensaje",
+    "messagePlaceholder": "¿Qué tienes en mente?",
+    "send": "Enviar mensaje",
+    "thanks": "Gracias — mensaje recibido.",
+    "thanksDescription": "Te responderé pronto.",
+    "location": "Costa Rica"
+  }
+}
