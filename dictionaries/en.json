@@ -71,6 +71,8 @@
     "send": "Send message",
     "thanks": "Thanks — got it.",
     "thanksDescription": "I'll get back to you soon.",
+    "sending": "Sending...",
+    "error": "Something went wrong sending your message. Please try again, or email me directly.",
     "location": "Costa Rica"
   }
 }

@@ -71,6 +71,8 @@
     "send": "Enviar mensaje",
     "thanks": "Gracias — mensaje recibido.",
     "thanksDescription": "Te responderé pronto.",
+    "sending": "Enviando...",
+    "error": "Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo o escríbeme directamente.",
     "location": "Costa Rica"
   }
 }
